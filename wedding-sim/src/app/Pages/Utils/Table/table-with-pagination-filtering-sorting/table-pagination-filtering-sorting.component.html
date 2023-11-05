@@ -13,9 +13,9 @@
     </ng-container>
 
     <!-- Progress Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{displayedColumnsName.name}} </th>
-      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    <ng-container matColumnDef="familyName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{displayedColumnsName.familyName}} </th>
+      <td mat-cell *matCellDef="let row"> {{row.familyName}} </td>
     </ng-container>
 
     <!-- Name Column -->
@@ -35,6 +35,11 @@
       <td mat-cell *matCellDef="let row"> {{row.children}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="invited">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{displayedColumnsName.invited}} </th>
+      <td mat-cell *matCellDef="let row"> {{row.invited}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="zone">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> {{displayedColumnsName.zone}} </th>
       <td mat-cell *matCellDef="let row"> {{row.zone}} </td>
@@ -49,8 +54,8 @@
       <th mat-header-cell *matHeaderCellDef>{{displayedColumnsName.action}}</th>
       <td mat-cell *matCellDef="let row">
         <div class="table-action-icon">
-          <mat-icon class="header-right-icon">edit</mat-icon>
-          <mat-icon class="header-right-icon">delete</mat-icon>
+          <mat-icon class="header-right-icon" (click)="openDialog(row.id)" >edit</mat-icon>
+          <mat-icon class="header-right-icon" (click)="onDelete(row.id)" >delete</mat-icon>
         </div>
       </td>
     </ng-container>

@@ -1,13 +1,20 @@
 
 export const displayedColumnsName  = {
   position: "No.",
-  name : "Family Name",
+  familyName : "Family Name",
   status : "Status",
   adult : "Adult",
   children : "Children",
+  invited: "Invited",
   zone : "Zone",
   estimate : "Estimate($)",
   action: "Action"
 }
 
-export const displayedColumnsArray = ["position", "name", "status", "adult", "children", "zone","estimate", "action"]
+export const displayedColumnsArray = ["position", "familyName", "status", "adult", "children", "invited", "zone","estimate", "action"]
+
+export const INVITED = ["Yes", " No"]
+
+export const STATUS = ["Sure", "Not Sure"]
+
+export const ZONE = ["Local", "Distance"]
