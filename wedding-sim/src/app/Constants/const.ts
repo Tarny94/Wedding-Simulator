@@ -1,5 +1,5 @@
 
-export const displayedColumnsName  = {
+export const displayedColumnsNameGuestsList  = {
   position: "No.",
   familyName : "Family Name",
   status : "Status",
@@ -11,7 +11,19 @@ export const displayedColumnsName  = {
   action: "Action"
 }
 
+export const displayColumnSupplyList = {
+  supply : "Supply",
+  price: "Unit Price",
+  totalPrice:"Total Price",
+  payed: "Payed",
+  confirmed: "Confirmed",
+  observation: "Observation",
+  action: "Action",
+}
+
 export const displayedColumnsArray = ["position", "familyName", "status", "adult", "children", "invited", "zone","estimate", "action"]
+
+export const displayedColumnsArraySupply = ["supply", "price","totalPrice", "payed", "confirmed", "observation", "action", "add"];
 
 export const INVITED = ["Yes", " No"]
 

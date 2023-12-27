@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {displayedColumnsArray} from "../../../Constants/const";
-import {CreateGuestComponent} from "../../create-guest/create-guest.component";
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {CreateGuestComponent} from "../create-guest/create-guest.component";
 import {MatButtonModule} from "@angular/material/button";
 
 

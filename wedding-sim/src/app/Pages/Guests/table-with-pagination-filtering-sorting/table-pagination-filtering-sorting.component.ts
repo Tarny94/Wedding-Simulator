@@ -5,11 +5,11 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {TitleCasePipe} from "@angular/common";
-import {displayedColumnsArray, displayedColumnsName} from "../../../../Constants/const";
+import {displayedColumnsArray, displayedColumnsNameGuestsList} from "../../../Constants/const";
 import {MatIconModule} from "@angular/material/icon";
-import {GuestService} from "../../../guest-service/guest.service";
+import {GuestService} from "../guest-service/guest.service";
 import {MatDialog} from "@angular/material/dialog";
-import {CreateGuestComponent} from "../../../create-guest/create-guest.component";
+import {CreateGuestComponent} from "../create-guest/create-guest.component";
 
 
 @Component({
@@ -24,7 +24,7 @@ export class TablePaginationFilteringSortingComponent implements OnInit {
 
   dataSource!: MatTableDataSource<any>;
   protected readonly displayedColumnsArray = displayedColumnsArray;
-  protected readonly displayedColumnsName = displayedColumnsName;
+  protected readonly displayedColumnsName = displayedColumnsNameGuestsList;
 
   guests$: any = this.guestService.guestList$;
 
