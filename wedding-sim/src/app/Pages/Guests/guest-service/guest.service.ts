@@ -6,7 +6,7 @@ import {BehaviorSubject, Observable, tap} from 'rxjs';
   providedIn: 'root'
 })
 export class GuestService {
-  private baseUrl = 'http://localhost:8080/guests'; // Replace with your backend API URL
+  private baseUrl = 'http://localhost:8080/wedding/guests'; // Replace with your backend API URL
 
   private guestListSubject = new BehaviorSubject<any[]>([]);
   guestList$ = this.guestListSubject.asObservable();

@@ -23,7 +23,7 @@ export const displayColumnSupplyList = {
 
 export const displayedColumnsArray = ["position", "familyName", "status", "adult", "children", "invited", "zone","estimate", "action"]
 
-export const displayedColumnsArraySupply = ["supply", "price","totalPrice", "payed", "confirmed", "observation", "action", "add"];
+export const displayedColumnsArraySupply = ["supply", "price","totalPrice", "payed", "confirmed", "observation", "action"];
 
 export const INVITED = ["Yes", " No"]
 

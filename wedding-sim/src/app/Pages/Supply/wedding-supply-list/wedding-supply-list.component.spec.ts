@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WeddingSupplyListComponent } from './wedding-supply-list.component';
+// @ts-ignore
+import { WeddingSupplyListComponent } from "./wedding-supply-list.component";
 
 describe('WeddingSupplyListComponent', () => {
   let component: WeddingSupplyListComponent;
