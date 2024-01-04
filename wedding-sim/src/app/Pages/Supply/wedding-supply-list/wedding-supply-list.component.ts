@@ -10,6 +10,7 @@ import {selectAllSupplies} from "../store/selectors/supplies.selectors";
 import {loadSupplies, removeSupplies} from "../store/actions/supplies.actions";
 import {SuppliesService} from "../supplies.service";
 import {AppState} from "../store/models/supplies.state";
+import {ConfirmationDialogComponent} from "../../utils/confirmation-dialog/confirmation-dialog.component";
 
 
 @Component({
@@ -36,23 +37,18 @@ export class WeddingSupplyListComponent implements OnInit{
     const dialogRef = this.dialog.open(WeddingCreateEditSuppliesComponent, {
       data : {id : null}
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   openUpdateDialog(id : String) {
     const dialogRef = this.dialog.open(WeddingCreateEditSuppliesComponent, {
       data : {id}
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   deleteSupply(id : string) {
-    this.store.dispatch(removeSupplies({id}));
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) this.store.dispatch(removeSupplies({id}));
+    });
   }
-
-  protected readonly removeSupplies = removeSupplies;
 }

@@ -15,6 +15,7 @@ export class WeddingCreateEditSuppliesComponent implements OnInit{
   id: string = "";
   supply : string = "";
   price : number = 0;
+  unit : number = 0;
   totalPrice : number = 0;
   payed : number = 0;
   confirmed : boolean = false;
@@ -29,28 +30,18 @@ export class WeddingCreateEditSuppliesComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    console.log("ID: ", this.data.id)
     if (this.data.id) {
       this.suppliesService.getSupply(this.data.id).subscribe(item => {
           this.id = this.data.id;
           this.supply = item.supply;
           this.price = item.price;
-          this.totalPrice = item.totalPrice;
+          this.unit = item.unit;
           this.payed = item.payed;
           this.confirmed = item.confirmed;
           this.observation = item.observation;
         },
-        (error) => {
-          console.log("Error", error)
-        },
-        () => {
-          console.log("%@#$: ",this.id,this.supply,
-          this.price,
-          this.totalPrice ,
-          this.payed,
-          this.confirmed ,
-          this.observation )
-        }
+        (error) => {},
+        () => {}
       )
     }
   }
@@ -59,26 +50,20 @@ export class WeddingCreateEditSuppliesComponent implements OnInit{
     const supplyData: Supply = {
       supply: this.supply,
       price : this.price,
-      totalPrice : this.totalPrice,
+      unit : this.unit,
       payed : this.payed,
       confirmed : this.confirmed,
       observation : this.observation
     }
-    console.log("##", supplyData)
 
     if(this.data.id) {
       try {
         this.store.dispatch(updateSupplies({id: this.data.id,updatedSupply: supplyData}))
-      } catch (error) {
-        console.log("error: ", error)
-      }
+      } catch (error) {}
     } else {
       try {
-
         this.store.dispatch(addSupplies({supply : supplyData}));
-      } catch {
-
-      }
+      } catch {}
     }
   }
 }

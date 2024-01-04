@@ -16,8 +16,8 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>{{titleSuppliesArray.totalPrice}}</mat-label>
-        <input matInput name="totalPrice" [(ngModel)]="totalPrice" type="number" >
+        <mat-label>{{titleSuppliesArray.unit}}</mat-label>
+        <input matInput name="unit" [(ngModel)]="unit" type="number" >
       </mat-form-field>
     </div>
 
@@ -28,7 +28,7 @@
       </mat-form-field>
          <div class="supply-confirmed-box">
            <div>Confirmed</div>
-           <mat-checkbox [checked]="confirmed" name="Confirmed"></mat-checkbox>
+           <mat-checkbox [checked]="confirmed" name="Confirmed"  [(ngModel)]="confirmed" ></mat-checkbox>
          </div>
     </div>
 

@@ -10,6 +10,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {GuestService} from "../guest-service/guest.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateGuestComponent} from "../create-guest/create-guest.component";
+import {ConfirmationDialogComponent} from "../../utils/confirmation-dialog/confirmation-dialog.component";
 
 
 @Component({
@@ -47,9 +48,19 @@ export class TablePaginationFilteringSortingComponent implements OnInit {
   }
 
   onDelete(id : string) {
-    this.guestService.deleteGuest(id).subscribe(res => {
-      console.log("44", res)}, error => {
-      console.log("44err:", error)});
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) this.guestService.deleteGuest(id).subscribe(res => {}, error => {}, () => {});
+    });
+  }
+
+  addGuest() {
+    const dialogRef = this.dialog.open(CreateGuestComponent, {
+      data : {id : null}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   applyFilter(event: Event) {

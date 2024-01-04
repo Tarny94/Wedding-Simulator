@@ -25,6 +25,7 @@ import { StoreModule } from '@ngrx/store';
 import {suppliesReducer} from "./pages/supply/store/reducers/supplies.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {SuppliesEffects} from "./pages/supply/store/effects/supplies.effects";
+import { ConfirmationDialogComponent } from './pages/utils/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {SuppliesEffects} from "./pages/supply/store/effects/supplies.effects";
     EditGuestComponent,
     WeddingSupplyListComponent,
     WeddingCreateEditSuppliesComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
