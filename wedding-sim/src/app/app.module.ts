@@ -26,6 +26,9 @@ import {suppliesReducer} from "./pages/supply/store/reducers/supplies.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {SuppliesEffects} from "./pages/supply/store/effects/supplies.effects";
 import { ConfirmationDialogComponent } from './pages/utils/confirmation-dialog/confirmation-dialog.component';
+import { WeddingStatisticsComponent } from './pages/statistics/wedding-statistics/wedding-statistics.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { ConfirmationDialogComponent } from './pages/utils/confirmation-dialog/c
     WeddingSupplyListComponent,
     WeddingCreateEditSuppliesComponent,
     ConfirmationDialogComponent,
+    WeddingStatisticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,11 +54,13 @@ import { ConfirmationDialogComponent } from './pages/utils/confirmation-dialog/c
     MatSelectModule,
     MatButtonModule,
     HttpClientModule,
+    CanvasJSAngularChartsModule,
     FormsModule,
     MatSortModule,
     MatCheckboxModule,
-    StoreModule.forRoot({supplies : suppliesReducer}),
-    EffectsModule.forRoot([SuppliesEffects])
+    StoreModule.forRoot({supplies: suppliesReducer}),
+    EffectsModule.forRoot([SuppliesEffects]),
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

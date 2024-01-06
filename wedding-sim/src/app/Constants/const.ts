@@ -1,8 +1,8 @@
 
 export const displayedColumnsNameGuestsList  = {
   position: "No.",
-  familyName : "Family Name",
-  status : "Status",
+  familyName : "Name",
+  confirmed : "Confirmed",
   adult : "Adult",
   children : "Children",
   invited: "Invited",
@@ -12,21 +12,20 @@ export const displayedColumnsNameGuestsList  = {
 }
 
 export const displayColumnSupplyList = {
-  supply : "Supply",
-  price: "Unit Price",
-  totalPrice:"Total Price",
-  payed: "Payed",
+  supply : "Costs",
+  price: "Unit Price($)",
+  unit: "Unit",
+  totalPrice:"Total Price($)",
+  payed: "Payed($)",
   confirmed: "Confirmed",
   observation: "Observation",
   action: "Action",
 }
 
-export const displayedColumnsArray = ["position", "familyName", "status", "adult", "children", "invited", "zone","estimate", "action"]
+export const displayedColumnsArray = ["position", "familyName", "confirmed", "adult", "children", "invited", "zone","estimate", "action"]
 
-export const displayedColumnsArraySupply = ["supply", "price","totalPrice", "payed", "confirmed", "observation", "action"];
+export const displayedColumnsArraySupply = ["supply", "price", "unit", "totalPrice", "payed", "confirmed", "observation", "action"];
 
-export const INVITED = ["Yes", " No"]
-
-export const STATUS = ["Sure", "Not Sure"]
+export const INVITED = ["Yes", "No"]
 
 export const ZONE = ["Local", "Distance"]

@@ -33,10 +33,10 @@ export class SuppliesEffects {
     this.action$.pipe(
       ofType(loadSupplies),
       switchMap(() =>
-          this.suppliesService.getSupplies().pipe(
-            map((supplies) => loadSuppliesSuccessful({supplies})),
-            catchError((error) => of(loadSuppliesFail({error})))
-          )
+        this.suppliesService.getSupplies().pipe(
+          map((supplies) => loadSuppliesSuccessful({supplies})),
+          catchError((error) => of(loadSuppliesFail({error})))
+        )
       )
     ));
 
@@ -61,6 +61,8 @@ export class SuppliesEffects {
         this.suppliesService.createSupply(supply).pipe(
           map(() => addSuppliesSuccessful()),
           catchError((error) => of(addSuppliesFailure({error})))
+        ).pipe(
+          tap(() =>  this.store.dispatch(loadSupplies()))
         ))
     ));
 
@@ -80,6 +82,8 @@ export class SuppliesEffects {
         return this.suppliesService.updateSupply(action.id,updatedSupply).pipe(
           map(() => updateSuppliesSuccessful()),
           catchError(error => of(updateSuppliesFailure({ error })))
+        ).pipe(
+          tap(() =>  this.store.dispatch(loadSupplies()))
         );
       })
     )

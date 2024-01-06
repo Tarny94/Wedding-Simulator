@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {STATUS, INVITED, ZONE} from "../../../constants/const";
+import {INVITED, ZONE} from "../../../constants/const";
 import {GuestService} from "../guest-service/guest.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
@@ -12,7 +12,7 @@ export class CreateGuestComponent implements OnInit{
   familyName : string = '';
   adult : number = 0;
   children : number = 0;
-  status : string = "";
+  confirmed : boolean = false;
   invited : string = "";
   zone : string = "";
   estimate : number = 0;
@@ -29,7 +29,6 @@ export class CreateGuestComponent implements OnInit{
 
   ngOnInit(): void {
     this.invitedValues = INVITED;
-    this.statusValues = STATUS;
     this.zoneValues = ZONE;
 
     this.checkIfIsEditMode()
@@ -42,7 +41,7 @@ export class CreateGuestComponent implements OnInit{
         this.familyName = result.familyName;
         this.adult = result.adult;
         this.children = result.children;
-        this.status = result.status;
+        this.confirmed = result.confirmed;
         this.invited = result.invited;
         this.zone = result.zone;
         this.estimate = result.estimate;
@@ -59,7 +58,7 @@ export class CreateGuestComponent implements OnInit{
       familyName : this.familyName,
       adult : this.adult,
       children : this.children,
-      status : this.status,
+      confirmed : this.confirmed,
       invited : this.invited,
       zone : this.zone,
       estimate : this.estimate,

@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8 container">
   <table mat-table [dataSource]="supplies$" matSort>
 
     <!-- Progress Column -->
@@ -19,6 +19,11 @@
       <td mat-cell *matCellDef="let row">{{row.price}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="unit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{displayedColumnsSupplyList.unit}}</th>
+      <td mat-cell *matCellDef="let row">{{row.unit}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="totalPrice">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> {{displayedColumnsSupplyList.totalPrice}} </th>
       <td mat-cell *matCellDef="let row">{{row.totalPrice}}  </td>
@@ -35,7 +40,7 @@
     </ng-container>
 
     <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef> <mat-icon style="font-weight: bolder" class="header-right-icon" (click)="openCreateDialog()" >add</mat-icon> </th>
+      <th mat-header-cell *matHeaderCellDef> <mat-icon class="header-right-icon add-button" (click)="openCreateDialog()">add</mat-icon></th>
       <td mat-cell *matCellDef="let row">
         <div class="table-action-icon">
           <mat-icon class="header-right-icon" (click)="openUpdateDialog(row.id)">edit</mat-icon>

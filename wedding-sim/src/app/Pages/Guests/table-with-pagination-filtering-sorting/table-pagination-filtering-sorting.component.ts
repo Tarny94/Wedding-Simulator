@@ -4,13 +4,15 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {TitleCasePipe} from "@angular/common";
+import {NgIf, TitleCasePipe} from "@angular/common";
 import {displayedColumnsArray, displayedColumnsNameGuestsList} from "../../../constants/const";
 import {MatIconModule} from "@angular/material/icon";
 import {GuestService} from "../guest-service/guest.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateGuestComponent} from "../create-guest/create-guest.component";
 import {ConfirmationDialogComponent} from "../../utils/confirmation-dialog/confirmation-dialog.component";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {FormsModule} from "@angular/forms";
 
 
 @Component({
@@ -18,7 +20,7 @@ import {ConfirmationDialogComponent} from "../../utils/confirmation-dialog/confi
   templateUrl: './table-pagination-filtering-sorting.component.html',
   styleUrls: ['./table-pagination-filtering-sorting.component.scss'],
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, TitleCasePipe, MatIconModule],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, TitleCasePipe, MatIconModule, MatCheckboxModule, NgIf, FormsModule],
 })
 
 export class TablePaginationFilteringSortingComponent implements OnInit {
@@ -29,11 +31,21 @@ export class TablePaginationFilteringSortingComponent implements OnInit {
 
   guests$: any = this.guestService.guestList$;
 
+  showEstimate: boolean = false;
+
   @ViewChild(MatPaginator) protected paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
   constructor(public guestService : GuestService, public dialog: MatDialog) {
     // Create 100 users
+  }
+
+  checkEstimate() {
+    if (this.showEstimate) {
+      this.showEstimate = !this.showEstimate;
+    } else {
+      this.showEstimate = true;
+    }
   }
 
   openDialog(id : string): void {
@@ -50,7 +62,9 @@ export class TablePaginationFilteringSortingComponent implements OnInit {
   onDelete(id : string) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
-      if(result) this.guestService.deleteGuest(id).subscribe(res => {}, error => {}, () => {});
+      if(result) this.guestService.deleteGuest(id).subscribe(res => {}, error => {}, () => {
+        this.guestService.updateGuestList();
+      });
     });
   }
 

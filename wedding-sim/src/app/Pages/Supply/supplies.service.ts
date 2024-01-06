@@ -9,28 +9,9 @@ import {Observable} from "rxjs";
 })
 export class SuppliesService {
   private baseUrl = 'http://localhost:8080/wedding/supplies';
-
-  dataSourceSupply : Supply[] =  [
-    {
-      supply : "Music",
-      price: 33,
-      totalPrice:444,
-      payed: 0,
-      confirmed: false,
-      observation: ""
-    },
-    {
-      supply : "Place",
-      price: 22,
-      totalPrice:55,
-      payed: 5,
-      confirmed: true,
-      observation: "without music"
-    }
-  ];
+  private suppliesCalculateUrl = 'http://localhost:8080/wedding/supplies/calculate';
 
   constructor(private http: HttpClient) { }
-
 
 
   getSupplies(): Observable<Supply[]> {
@@ -51,5 +32,9 @@ export class SuppliesService {
 
   removeSupply(id : String) {
     return this.http.delete<Supply>(this.baseUrl+"/"+id);
+  }
+
+  getSuppliesCalculate(id : string) {
+    return this.http.get(this.suppliesCalculateUrl+"/"+id)
   }
 }

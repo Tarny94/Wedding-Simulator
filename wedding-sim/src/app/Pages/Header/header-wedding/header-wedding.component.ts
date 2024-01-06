@@ -9,16 +9,4 @@ import {CreateGuestComponent} from "../../guests/create-guest/create-guest.compo
 })
 export class HeaderWeddingComponent {
 
-  constructor(public dialog: MatDialog) {
-
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(CreateGuestComponent, {
-      data : {id : null}
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
 }

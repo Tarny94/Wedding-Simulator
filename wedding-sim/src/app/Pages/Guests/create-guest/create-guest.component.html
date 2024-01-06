@@ -22,12 +22,10 @@
     </div>
 
     <div>
-      <mat-form-field>
-        <mat-label>Status</mat-label>
-        <mat-select name="status" [(ngModel)]="status">
-          <mat-option *ngFor="let answer of statusValues" [value]="answer" >{{answer}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <div class="guest-confirmed-box">
+          <div>Confirmed</div>
+          <mat-checkbox [checked]="confirmed" name="confirmed" [(ngModel)]="confirmed" ></mat-checkbox>
+        </div>
 
       <mat-form-field>
         <mat-label>Invited</mat-label>
