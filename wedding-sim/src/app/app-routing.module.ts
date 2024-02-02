@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'supplies', component: WeddingSupplyListComponent },
   { path: 'guests', component: WeddingInvitationListComponent },
   { path: 'statistics', component: WeddingStatisticsComponent },
-  { path: '/', redirectTo: '/guests', pathMatch: 'full' },
+  { path: '', redirectTo: '/guests', pathMatch: 'full' },
 ];
 
 @NgModule({
